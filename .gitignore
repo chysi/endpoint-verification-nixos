@@ -1,0 +1,18 @@
+unpacked
+
+# Downloaded files
+*.deb
+temp_debs/
+endpoint-verification-*/
+
+# Nix build artifacts
+result
+result-*
+.direnv/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
