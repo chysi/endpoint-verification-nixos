@@ -17,11 +17,11 @@
 
       mkEndpointVerification = { osName ? "NixOS" }: pkgs.stdenv.mkDerivation {
         pname = "endpoint-verification";
-        version = "2023.12.18.c591921611-00";
+        version = "1765828494702-842239260";
 
         src = pkgs.fetchurl {
-          url = "https://packages.cloud.google.com/apt/pool/endpoint-verification/endpoint-verification_2023.12.18.c591921611-00_amd64_0ed3d7aced2a9858c943a958c4c8ee9a.deb";
-          sha256 = "sha256-VX4M41J+K8OimQbLyK37rl5Gn62c+N0sp10Eqd3D3MU=";
+          url = "https://packages.cloud.google.com/apt/pool/endpoint-verification/endpoint-verification_1765828494702-842239260_amd64_3bcef7ad4e9e6bf8b16dae869190fca7.deb";
+          sha256 = "sha256-LqglFD/VahDWrjo/JxnNR4M0effdP6pu7X9izi0KxmQ=";
         };
 
         deviceStateScript = pkgs.writeScript "device_state.sh" ''
