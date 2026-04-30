@@ -299,6 +299,8 @@
 
                 systemd.tmpfiles.rules = [
                   "d /opt/google/endpoint-verification/var/lib 0755 root root -"
+                  "d /opt/google/endpoint-verification/bin 0755 root root -"
+                  "L+ /opt/google/endpoint-verification/bin/device_state.sh - - - - ${pkg}/opt/google/endpoint-verification/bin/device_state.sh"
                 ];
 
                 systemd.services.endpoint-verification = {
