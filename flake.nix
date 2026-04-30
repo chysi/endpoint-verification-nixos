@@ -268,6 +268,7 @@
             let
               cfg = config.services.endpoint-verification;
               pkg = mkEndpointVerification { osName = cfg.osName; };
+              firewallEnabled = config.networking.firewall.enable or false;
             in
             {
               options.services.endpoint-verification = {
@@ -280,6 +281,12 @@
               };
 
               config = mkIf cfg.enable {
+                # Chrome checks /etc/ufw/ufw.conf for firewall status but NixOS
+                # uses nftables/iptables. Provide a compat shim so Chrome reports
+                # the actual NixOS firewall state.
+                environment.etc."ufw/ufw.conf" = mkIf firewallEnabled {
+                  text = "ENABLED=yes\n";
+                };
                 environment.systemPackages = [ pkg ];
 
                 environment.etc."opt/chrome/native-messaging-hosts/com.google.endpoint_verification.api_helper.json".source =
